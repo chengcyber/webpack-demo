@@ -1,0 +1,35 @@
+{
+  "presets": [
+    [
+      "env", {
+        "useBuiltIns": false,
+        "loose": true
+      }
+    ],
+    "react"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    "lodash",
+    "syntax-dynamic-import",
+    "react-loadable/babel",
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "libraryDirectory": "es",
+        "style": true
+      }
+    ],
+    [
+      "transform-runtime",
+      {
+        "helpers": true,
+        "polyfill": true,
+        "regenerator": true,
+        "moduleName": "babel-runtime"
+      }
+    ]
+  ]
+}
+
