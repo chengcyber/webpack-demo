@@ -29,7 +29,13 @@ const config = {
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      title: 'webpack demo',
+      template: 'src/index.html',
+      templateParameters: {
+        title: 'Webpack Demo',
+      },
+    }),
+    new webpack.DefinePlugin({
+      SOME_PARAM: JSON.stringify('foo'),
     }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
