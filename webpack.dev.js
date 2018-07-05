@@ -5,13 +5,23 @@ const path = require('path')
 
 const config = merge(commonConfig, {
   mode: 'development',
-  devtool: 'inline-source-map',
+  // might use bundle-buddy to analyze duplicate
+  devtool: 'source-map',
   devServer: {
     contentBase: './dist',
+    port: 8000,
     hot: true,
     proxy: {
-      '/': 'http://localhost:3000',
+      // {
+      //   context: [
+      //     '/',
+      //     '/foo',
+      //   ],
+      //   target: 'http://localhost:3000',
+      // },
+      '**': 'http://localhost:3000',
     },
+    historyApiFallback: true,
   },
   plugins: [
     // new webpack.NamedModulesPlugin(),
