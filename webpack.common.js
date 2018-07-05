@@ -3,8 +3,14 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const DEV_MODE = process.env.NODE_ENV !== 'production'
+const BUNDLE_ANALYZER = process.env.BUNDLE_ANALYZER === '1'
+
+const bundleAnalyzerConfig = {
+  analyzerMode: BUNDLE_ANALYZER ? 'server' : 'disabled',
+}
 
 const config = {
   entry: {
@@ -43,6 +49,7 @@ const config = {
       filename: DEV_MODE ? '[name].css' : '[name].[hash].css',
       chunkFilename: DEV_MODE ? '[id].css' : '[id].[hash].css',
     })
+    new BundleAnalyzerPlugin(bundleAnalyzerConfig),
   ],
   // optimization: {
   //   splitChunks: {
