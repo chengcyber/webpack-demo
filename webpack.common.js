@@ -134,7 +134,7 @@ const config = {
       // both options are optional
       filename: DEV_MODE ? '[name].css' : '[name].[hash].css',
       chunkFilename: DEV_MODE ? '[id].css' : '[id].[hash].css',
-    })
+    }),
     new BundleAnalyzerPlugin(bundleAnalyzerConfig),
   ],
   optimization: {
