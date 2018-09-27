@@ -125,6 +125,7 @@ const config = {
       templateParameters: {
         title: 'Webpack Demo',
       },
+      inlineSource: 'runtime~.+\\.js',
     }),
     new webpack.DefinePlugin({
       SOME_PARAM: JSON.stringify('foo'),
@@ -135,12 +136,14 @@ const config = {
       filename: DEV_MODE ? '[name].css' : '[name].[hash].css',
       chunkFilename: DEV_MODE ? '[id].css' : '[id].[hash].css',
     }),
+    new webpack.HashedModuleIdsPlugin(),
     new BundleAnalyzerPlugin(bundleAnalyzerConfig),
   ],
   optimization: {
     splitChunks: {
-      chunks: 'all'
-    }
+      chunks: 'all',
+    },
+    runtimeChunk: true,
   },
   // optimization: {
   //   splitChunks: {
