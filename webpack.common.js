@@ -7,6 +7,7 @@ const TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPl
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const theme = require('./theme')
 const tsGraphqlTransformer = require('ts-transform-graphql-tag').getTransformer
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 
 const DEV_MODE = process.env.NODE_ENV !== 'production'
 const BUNDLE_ANALYZER = process.env.BUNDLE_ANALYZER === '1'
@@ -138,6 +139,7 @@ const config = {
     }),
     new webpack.HashedModuleIdsPlugin(),
     new BundleAnalyzerPlugin(bundleAnalyzerConfig),
+    new CaseSensitivePathsPlugin(),
   ],
   optimization: {
     splitChunks: {
