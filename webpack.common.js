@@ -134,8 +134,7 @@ const config = {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: DEV_MODE ? '[name].css' : '[name].[hash].css',
-      chunkFilename: DEV_MODE ? '[id].css' : '[id].[hash].css',
+      filename: DEV_MODE ? '[name].css' : '[name].[contenthash].css',
     }),
     new webpack.HashedModuleIdsPlugin(),
     new BundleAnalyzerPlugin(bundleAnalyzerConfig),
